@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="nav-bar">
-        <h1 style={{ fontSize: "1.5rem", margin: 0, background: "linear-gradient(to right, #dc2626, #f87171)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        <h1 className="gradient-title">
           AI Resume Analyzer
         </h1>
         <div className="nav-links">

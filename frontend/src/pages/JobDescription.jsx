@@ -34,7 +34,7 @@ function JobDescription() {
     };
 
     return (
-        <div className="glass-panel" style={{ maxWidth: "800px", margin: "40px auto" }}>
+        <div className="glass-panel jd-container">
             <h2 className="text-center">Job Description</h2>
             <div>
                 <input

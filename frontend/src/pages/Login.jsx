@@ -27,7 +27,7 @@ function Login() {
   };
 
   return (
-    <div className="glass-panel" style={{ maxWidth: "400px", margin: "40px auto" }}>
+    <div className="glass-panel auth-container">
       <h2 className="text-center">Welcome Back</h2>
       <input
         placeholder="Username"
