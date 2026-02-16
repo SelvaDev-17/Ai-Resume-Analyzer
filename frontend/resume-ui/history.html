@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>History</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>AI Resume Analyzer</h2>
+    <ul>
+      <li><a href="upload.html">Upload Resume</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li class="active">History</li>
+      <li><a href="login.html">Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Past Analyses</h1>
+    <p class="page-sub">Review your previous resume analysis results.</p>
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+      <div class="summary-box">
+        <h3>3</h3>
+        <p>Total Analyses</p>
+      </div>
+      <div class="summary-box">
+        <h3>82%</h3>
+        <p>Highest Match</p>
+      </div>
+      <div class="summary-box">
+        <h3>65%</h3>
+        <p>Lowest Match</p>
+      </div>
+    </div>
+
+    <!-- History Table -->
+    <div class="card">
+      <input type="text" placeholder="Search job role..." class="search-box">
+
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Job Role</th>
+            <th>Match Score</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>12 Feb 2026</td>
+            <td>Backend Developer</td>
+            <td>70%</td>
+            <td><button>View</button></td>
+          </tr>
+          <tr>
+            <td>10 Feb 2026</td>
+            <td>Frontend Developer</td>
+            <td>82%</td>
+            <td><button>View</button></td>
+          </tr>
+          <tr>
+            <td>08 Feb 2026</td>
+            <td>Full Stack Developer</td>
+            <td>65%</td>
+            <td><button>View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>AI Resume Analyzer</h2>
+    <ul>
+      <li><a href="upload.html">Upload Resume</a></li>
+      <li class="active">Results</li>
+      <li><a href="history.html">History</a></li>
+      <li><a href="login.html">Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <h1>Resume Analysis Result</h1>
+
+    <!-- Score Card -->
+    <div class="card score-card">
+      <h2>Match Score</h2>
+      <div class="score-circle">75%</div>
+
+      <div class="progress-bar">
+        <div class="progress" style="width:75%;"></div>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="card">
+      <h3>Matched Skills</h3>
+      <div class="tags">
+        <span>Python</span>
+        <span>Django</span>
+      </div>
+
+      <h3 style="margin-top:20px;">Missing Skills</h3>
+      <div class="tags missing">
+        <span>REST API</span>
+        <span>SQL</span>
+      </div>
+
+      <button onclick="window.location.href='upload.html'">Analyze Again</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

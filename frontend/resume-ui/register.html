@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="left-panel">
+  <div>
+    <h1>Join AI Resume Analyzer</h1>
+    <p>Create your account and start matching your resume with jobs instantly.</p>
+  </div>
+</div>
+
+<div class="right-panel">
+  <div class="container">
+    <h2>Create Account</h2>
+
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+
+    <!-- Password -->
+    <div class="password-box">
+      <input type="password" id="password1" placeholder="Password">
+      <span class="toggle">Show</span>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="password-box">
+      <input type="password" id="password2" placeholder="Confirm Password">
+      <span class="toggle">Show</span>
+    </div>
+
+    <button>Register</button>
+    <p>Already have account? <a href="login.html">Login</a></p>
+  </div>
+</div>
+
+<script>
+  const toggles = document.querySelectorAll(".toggle");
+
+  toggles.forEach((toggle, index) => {
+    toggle.addEventListener("click", () => {
+      const input = index === 0
+        ? document.getElementById("password1")
+        : document.getElementById("password2");
+
+      const hidden = input.type === "password";
+      input.type = hidden ? "text" : "password";
+      toggle.textContent = hidden ? "Hide" : "Show";
+    });
+  });
+</script>
+
+</body>
+</html>

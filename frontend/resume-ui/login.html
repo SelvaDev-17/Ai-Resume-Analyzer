@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="left-panel">
+  <div>
+    <h1>AI Resume Analyzer</h1>
+    <p>Upload your resume and match it with jobs instantly using smart analysis.</p>
+  </div>
+</div>
+
+<div class="right-panel">
+  <div class="container">
+    <h2>Login</h2>
+
+    <input type="email" placeholder="Email">
+
+    <!-- Password with Emoji Toggle -->
+    <div class="password-box">
+      <input type="password" id="password" placeholder="Password">
+      <span id="togglePassword">🙈</span>
+    </div>
+
+    <button>Login</button>
+    <p>Don't have an account? <a href="register.html">Register</a></p>
+  </div>
+</div>
+
+<!-- JS for show/hide password -->
+<script>
+  const toggle = document.getElementById("togglePassword");
+  const password = document.getElementById("password");
+
+  toggle.addEventListener("click", () => {
+    const isHidden = password.type === "password";
+    password.type = isHidden ? "text" : "password";
+    toggle.textContent = isHidden ? "👀" : "🙈";
+  });
+</script>
+
+</body>
+</html>
