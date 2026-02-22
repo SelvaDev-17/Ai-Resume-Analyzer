@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 
 function Results() {
   const [resumes, setResumes] = useState([]);
@@ -16,7 +16,7 @@ function Results() {
     if (!token) return;
 
     try {
-      const res = await axios.get("/api/resumes/", {
+      const res = await api.get("/api/resumes/", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setResumes(res.data);
@@ -38,7 +38,7 @@ function Results() {
     setSelectedResume(resumeId);
 
     try {
-      const res = await axios.post(
+      const res = await api.post(
         "/api/analyze/",
         { resume_id: resumeId, job_desc_id: jdId },
         { headers: { Authorization: `Bearer ${token}` } }

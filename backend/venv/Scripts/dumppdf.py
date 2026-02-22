@@ -1,4 +1,4 @@
-#!C:\Users\Swarnalakshmi Naresh\Desktop\resume analyzer\venv\Scripts\python.exe
+#!C:\Users\Swarnalakshmi Naresh\Desktop\ai resume analyzer\backend\venv\Scripts\python.exe
 """Extract pdf structure in XML format"""
 
 import logging

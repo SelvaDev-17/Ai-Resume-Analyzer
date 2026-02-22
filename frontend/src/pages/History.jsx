@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 function History() {
   const [history, setHistory] = useState([]);
@@ -7,7 +7,7 @@ function History() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    axios.get("http://127.0.0.1:8000/api/history/", {
+    api.get("/api/history/", {
       headers: { Authorization: `Bearer ${token}` },
     }).then(res => setHistory(res.data));
   }, []);

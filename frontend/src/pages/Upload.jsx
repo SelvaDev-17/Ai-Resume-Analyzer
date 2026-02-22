@@ -1,9 +1,11 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 function Upload() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleUpload = async () => {
     if (!file) {
@@ -23,14 +25,14 @@ function Upload() {
 
     setLoading(true);
     try {
-      await axios.post("/api/resume/upload/", formData, {
+      await api.post("/api/resume/upload/", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
         },
       });
       alert("Resume uploaded successfully!");
-      window.location.href = "/job-description";
+      navigate("/job-description");
     } catch (err) {
       console.error(err);
       let errorMessage = "Upload failed!";

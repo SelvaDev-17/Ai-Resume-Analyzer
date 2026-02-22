@@ -1,13 +1,14 @@
 from django.urls import path
-from .views import register_user, upload_resume, list_resumes, protected_test, create_job_description, analyze_resume
+from .views import register_user, upload_resume, list_resumes, protected_test, create_job_description, analyze_resume, CustomTokenObtainPairView, logout_user
 
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('register/', register_user),
 
-    path('token/', TokenObtainPairView.as_view()),
+    path('token/', CustomTokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
+    path('logout/', logout_user),
 
     path('protected/', protected_test),
 

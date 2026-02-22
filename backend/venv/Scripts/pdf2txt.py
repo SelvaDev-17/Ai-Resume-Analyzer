@@ -1,4 +1,4 @@
-#!C:\Users\Swarnalakshmi Naresh\Desktop\resume analyzer\venv\Scripts\python.exe
+#!C:\Users\Swarnalakshmi Naresh\Desktop\ai resume analyzer\backend\venv\Scripts\python.exe
 """A command line tool for extracting text and images from PDF and
 output it to plain text, html, xml or tags.
 """

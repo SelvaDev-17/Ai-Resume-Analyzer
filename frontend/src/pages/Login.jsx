@@ -1,24 +1,25 @@
 import { useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import api from "../api";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     setLoading(true);
     try {
       // Use relative path to leverage Vite proxy
-      const res = await axios.post("/api/token/", {
+      const res = await api.post("/api/token/", {
         username,
         password,
       });
 
       localStorage.setItem("token", res.data.access);
       localStorage.setItem("refresh", res.data.refresh);
-      window.location.href = "/upload";
+      navigate("/upload");
     } catch (err) {
       alert("Login failed! Check credentials.");
     } finally {

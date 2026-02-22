@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate } from "react-router-dom";
 
 function JobDescription() {
@@ -17,7 +17,7 @@ function JobDescription() {
 
         setLoading(true);
         try {
-            const res = await axios.post(
+            const res = await api.post(
                 "/api/job-description/",
                 { title, description_text: description },
                 { headers: { Authorization: `Bearer ${token}` } }

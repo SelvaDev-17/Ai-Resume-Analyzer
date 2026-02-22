@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
@@ -13,7 +13,7 @@ function Register() {
     setLoading(true);
     try {
       // Use relative path to leverage Vite proxy
-      await axios.post("/api/register/", {
+      await api.post("/api/register/", {
         username,
         email,
         password,

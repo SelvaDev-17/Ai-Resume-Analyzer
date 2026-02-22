@@ -35,3 +35,13 @@ class MatchResult(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.match_score}%"
+
+class UserLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=150)
+    email = models.EmailField()
+    login_time = models.DateTimeField(auto_now_add=True)
+    logout_time = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.username} - {self.login_time}"

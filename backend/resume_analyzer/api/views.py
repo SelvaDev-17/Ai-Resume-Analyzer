@@ -8,9 +8,11 @@ from django.contrib.auth.models import User
 
 import pdfplumber
 
-from .models import Resume, JobDescription, MatchResult
+from .models import Resume, JobDescription, MatchResult, UserLog
 from .serializers import RegisterSerializer, ResumeSerializer, JobDescriptionSerializer, MatchResultSerializer
 from .utils import analyze_resume as perform_analysis
+from rest_framework_simplejwt.views import TokenObtainPairView
+from django.utils import timezone
 
 
 # -------------------------
@@ -40,6 +42,39 @@ def protected_test(request):
     return Response({
         "message": f"Hello {request.user.username}, you are authenticated!"
     })
+
+
+# -------------------------
+# CUSTOM LOGIN & LOGOUT API
+# -------------------------
+class CustomTokenObtainPairView(TokenObtainPairView):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        if response.status_code == status.HTTP_200_OK:
+            username = request.data.get('username')
+            try:
+                user = User.objects.get(username=username)
+                UserLog.objects.create(
+                    user=user,
+                    username=user.username,
+                    email=user.email,
+                )
+            except User.DoesNotExist:
+                pass
+        return response
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def logout_user(request):
+    try:
+        # Get the most recent active login session for the user
+        user_log = UserLog.objects.filter(user=request.user, logout_time__isnull=True).order_by('-login_time').first()
+        if user_log:
+            user_log.logout_time = timezone.now()
+            user_log.save()
+        return Response({"message": "Logged out successfully"}, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 # -------------------------
@@ -80,7 +115,7 @@ def upload_resume(request):
     resume.extracted_text = extracted_text
     resume.save()
 
-    serializer = ResumeSerializer(resume)
+    serializer = ResumeSerializer(resume, context={'request': request})
 
     return Response(
         {"message": "Resume uploaded successfully", "resume": serializer.data},
@@ -95,7 +130,7 @@ def upload_resume(request):
 @permission_classes([IsAuthenticated])
 def list_resumes(request):
     resumes = Resume.objects.filter(user=request.user).order_by('-uploaded_at')
-    serializer = ResumeSerializer(resumes, many=True)
+    serializer = ResumeSerializer(resumes, many=True, context={'request': request})
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
